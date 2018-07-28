@@ -49,11 +49,8 @@ export default class Signup extends Component {
     this.setState({ isLoading: true });
     try {
       const newUser = await Auth.signUp({
-        username: this.state.username,
-        password: this.state.password,
-        attributes: {
-            email: this.state.email
-        }
+        username: this.state.email,
+        password: this.state.password
       });
       this.setState({
         newUser
@@ -78,7 +75,7 @@ export default class Signup extends Component {
       this.props.userHasAuthenticated(true);
       this.props.history.push("/");
     } catch (e) {
-      // alert(e.message);
+      alert(e.message);
       this.setState({ isLoading: false });
     }
   }
